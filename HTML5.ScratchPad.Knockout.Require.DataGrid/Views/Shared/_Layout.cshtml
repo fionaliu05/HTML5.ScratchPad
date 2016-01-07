@@ -1,0 +1,52 @@
+﻿@using HTML5.ScratchPad.Knockout.Require.DataGrid.Extensions
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="stylesheet" href="@Html.ContentPath("app/main.css")" />
+    <script>var version = "@Html.AssemblyRevisionNumber()";</script>
+   
+    @*<script type="text/javascript" data-main="~/Scripts/main.js" src="~/Scripts/lib/require.js"></script>*@
+
+        @*<link href="~/Content/app/Site.css" rel="stylesheet" type="text/css" />
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />*@
+
+        </head>
+        <body>
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        @Html.ActionLink("Knockout/RequrieJS", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container body-content">
+                @RenderBody()
+                <hr />
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+                </footer>
+            </div>
+
+        <script src="~/Scripts/lib/modernizr-2.6.2.js"></script>
+        <script src="~/Scripts/lib/jquery-2.1.4.min.js"></script>
+        <script src="~/Scripts/lib/bootstrap.min.js"></script>
+
+        @*replaces the data-main HTML5 attribute which tells require.js to load scripts/main.js after require.js loads, which usually
+            goes in the head section, or at the end of body section , so as not to block rendering*@
+        <script src="@Html.ScriptsPath("lib/require.js")"></script>
+        @RenderSection("scripts", required: false)
+</body>
+</html>

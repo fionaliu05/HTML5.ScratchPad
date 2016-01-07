@@ -1,0 +1,12 @@
+﻿/* 3rd party stylesheets */
+@import url("../bootstrap.css");
+@import url("../bootstrap-theme.css");
+/*
+    3rd party style sheets cannot go in a subfolder esp. bootstrap css as they have references to the Fonts folder  ../fonts/ dont want
+    to mess with minimisation etc
+    Get errors finding glyphs etc, if moved
+    ref : http://stackoverflow.com/questions/18369036/bootstrap-3-glyphicons-are-not-working
+*/
+
+/* Application stylesheets */
+@import url("Site.css");

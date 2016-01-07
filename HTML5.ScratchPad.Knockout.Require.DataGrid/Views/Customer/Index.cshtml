@@ -1,0 +1,167 @@
+﻿@using HTML5.ScratchPad.Knockout.Require.DataGrid.Extensions
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<h1>HTML Table with DataGrid Capabilities using Knockout.js DataBinding and RequireJS.</h1>
+<h2 class="center-block">Performing Add, Update, and Delete Operations using Ajax Restful Web-Api-Client built using RequireJS Module</h2>
+
+<script src="~/Scripts/lib/jquery-2.1.4.min.js"></script>
+<script src="~/Scripts/lib/bootstrap.min.js"></script>
+<script src="~/Scripts/lib/knockout-3.4.0.js"></script>
+<script src="~/Scripts/lib/knockout.mapping-latest.js"></script>
+<script src="~/Scripts/lib/require.js"></script>
+<script src="~/Scripts/app/CustomerViewModel.js"></script>
+<script src="~/Scripts/main.js"></script>
+
+<!--include scripts for knockout and require using data-main attribute as an entry point -->
+<!--when require.js loads it will inject another script tag
+    (with async attribute) for scripts/main.js-->
+
+<!--This moves to the layout and is covered by the-->
+@*<script type="text/javascript" data-main="~/Scripts/main.js" src="~/Scripts/lib/require.js"></script>*@
+
+@*@section scripts
+{
+    @Html.InitPageMainModule("main-CustomerViewModel")
+
+}*@
+
+<!--html templates -->
+<script type="text/template" id="readonlyTemplate">
+    <tr>
+        <td>
+            <span data-bind="text: CustomerId"></span>
+        </td>
+        <td>
+            <span data-bind="text: FirstName"></span>
+        </td>
+        <td>
+            <span data-bind="text: Surname"></span>
+        </td>
+        <td>
+            <span data-bind="text: AddressLine1"></span>
+        </td>
+        <td>
+            <span data-bind="text: AddressLine2"></span>
+        </td>
+        <td>
+            <span data-bind="text: AddressLine3"></span>
+        </td>
+        <td>
+            <span data-bind="text: AddressLine4"></span>
+        </td>
+        <td>
+            <span data-bind="text: Postcode"></span>
+        </td>
+        <td>
+            <button class="btn btn-lg glyphicon glyphicon-edit"
+                    title="Click here to edit record" data-bind="click: function () { $root.editTemplate($data);}" />
+        </td>
+        <td>
+            <button class="btn btn-lg glyphicon glyphicon-trash"
+                    title="Click here to delete record"
+                    data-bind="click:function () { $root.delete($data); }"></button>
+        </td>
+    </tr>
+</script>
+
+<script type="text/html" id="editTemplate">
+    <tr>
+        <td>
+            <input type="text" class="form-control" data-bind="value: CustomerId" id="txtcustid" disabled="disabled" />
+        </td>
+        <td>
+            <input type="text" class="form-control" data-bind="value: FirstName" id="txtfname" />
+        </td>
+        <td>
+            <input type="text" class="form-control" data-bind="value: Surname" id="txtsname" />
+        </td>
+        <td>
+            <input type="text" class="form-control" data-bind="value: AddressLine1" id="txtAdd1" />
+        </td>
+        <td>
+            <input type="text" class="form-control" data-bind="value: AddressLine2" id="txtAdd2" />
+        </td>
+        <td>
+            <input type="text" class="form-control" data-bind="value: AddressLine3" id="txtAdd3" />
+        </td>
+        <td>
+            <input type="text" class="form-control" data-bind="value: AddressLine4" id="txtAdd4" />
+        </td>
+        <td>
+            <input type="text" class="form-control" data-bind="value: Postcode" id="txtpcname" />
+        </td>
+        <td>
+            <button class="btn btn-lg glyphicon glyphicon-floppy-save" title="Click here to save record"
+                    data-bind="click:$root.save"></button>
+        </td>
+        <td>
+            <button class="btn btn-lg glyphicon glyphicon-remove-circle"
+                    title="Click here to cancel" data-bind="click:$root.reset"></button>
+        </td>
+    </tr>
+</script>
+<!--ends here-->
+
+
+<button type="button" class="btn btn-lg glyphicon glyphicon-refresh"
+        title="Click here to refresh records"
+        data-bind="click:$root.refreshRecords"></button>
+
+<button type="button" class="btn btn-lg glyphicon glyphicon-plus-sign"
+        title="Click here to add record"
+        data-bind="click:$root.addRecord"></button>
+
+<table class="table table-bordered table-condensed table-striped">
+    <thead>
+        <tr>
+            <th class="text-center">
+                CustomerId
+            </th>
+            <th class="text-center">
+                Firstname
+            </th>
+            <th class="text-center">
+                Surname
+            </th>
+            <th class="text-center">
+                Address1
+            </th>
+            <th class="text-center">
+                Address2
+            </th>
+            <th class="text-center">
+                Address3
+            </th>
+            <th class="text-center">
+                Address4
+            </th>
+
+            <th class="text-center">
+                Postcode
+            </th>
+            <th class="text-center">
+            </th>
+            <th class="text-center">
+            </th>
+        </tr>
+    </thead>
+    <tbody id="customers" data-bind="template: { name: setCurrentTemplate, foreach: Customers }"></tbody>
+</table>
+
+<hr />
+<div>
+    <span class="label label-default" data-bind="text:Message"> </span>
+    
+</div>
+
+<footer>http://www.dotnetcurry.com/aspnet-mvc/1180/html-data-grid-aspnet-mvc-using-knockoutjs-jquery-requirejs</footer>
+
+<div class="processing"><!-- Place at bottom of page --></div>
+
+
+
+
