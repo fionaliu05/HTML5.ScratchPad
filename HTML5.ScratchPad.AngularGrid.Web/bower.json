@@ -1,0 +1,16 @@
+{
+  "name": "ASP.NET",
+  "private": true,
+  "dependencies": {
+    "angular": "1.4.7",
+    "angular-route": "1.4.7",
+    "angular-bootstrap": "~0.12.0",
+    "bootstrap": "*",
+    "angular-material": "*",
+    "font-awesome": "*"
+
+  },
+  "resolutions": {
+    "angular": "1.4.7"
+  }
+}
